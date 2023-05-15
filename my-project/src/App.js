@@ -10,8 +10,10 @@ const App = () => {
   const [responseDetails, setResponseDetails] = useState(null);
 
   // In practice would put in env
-  const apiKey = "NHWE-QAUR-DUI4-S3S6";
+  const apiKey = process.env.REACT_APP_API_KEY;
+
   // const levels = ["Syntax", "MX", "Server", "Address"];
+  
 
   // POST request to an email validation service
   const validateEmail = (email, level) => {
@@ -109,7 +111,6 @@ const App = () => {
         >Refresh
         </button>
         </div>
-        
         {responseDetails && <pre>{responseDetails}</pre>}
       </form>
     </div>
