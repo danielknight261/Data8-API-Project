@@ -11,7 +11,7 @@ const App = () => {
 
   // In practice would put in env
   const apiKey = "NHWE-QAUR-DUI4-S3S6";
-  const levels = ["Syntax", "MX", "Server", "Address"];
+  // const levels = ["Syntax", "MX", "Server", "Address"];
 
   // POST request to an email validation service
   const validateEmail = (email, level) => {
@@ -54,6 +54,14 @@ const App = () => {
       .finally(() => setIsSubmitting(false));
   };
 
+  // refresh function  reset all state
+  const handleRefresh = () => {
+    setEmail('');
+    setLevel('Syntax');
+    setErrorMessage(null);
+    setResponseDetails(null);
+  }
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-300">
       <form
@@ -81,7 +89,7 @@ const App = () => {
           <select
             value={level}
             onChange={(e) => setLevel(e.target.value)}
-            className="cursor-pointer shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="mb-2 cursor-pointer shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="Syntax">Syntax</option>
             <option value="MX">MX</option>
@@ -90,8 +98,18 @@ const App = () => {
           </select>
         </div>
 
+        <div className="flex items-center justify-between">
+        <button className="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+        type="submit">
+        Submit
+        </button>
+        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button" 
+        onClick={handleRefresh}
+        >Refresh
+        </button>
+        </div>
         
-        <button type="submit">Submit</button>
         {responseDetails && <pre>{responseDetails}</pre>}
       </form>
     </div>

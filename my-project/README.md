@@ -4,7 +4,9 @@ Step 2:Begin the build , Establish simple connecting using JSON Endpoint
 
 Step 2.1: Define states, email, errors, submission and response ✅
 Step 3: Include all 4 of the search option (update state, define array and update data object) ✅
-Step 4:make the input and response layout cleaner "textarea" is not correct choice. ✅
+Step 4:Make the input and response layout cleaner "textarea" is not correct choice. 
+Step 5: Seems to be running into an issue when using the same email changing the level and then submitting, refresh button maybe useful.
+
 
 
 
