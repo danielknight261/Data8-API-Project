@@ -5,7 +5,7 @@ This project utilizes Javascript, React, Tailwind and Axios.
 
 ## Live Link & Localhost setup
 - Vercel: [Live Application](https://data8-api-project.vercel.app/)
-- For Localhost, clone the repository and run the project on Localhost 3000
+- For Localhost, clone the repository, Install dependencies:, Change to the appropriate directory Start the local server: npm run start
 
 ## Stretch Goals
 - Explore the advanced options further.
