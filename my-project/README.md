@@ -1,39 +1,33 @@
+# Data8 Contact Form - Email Validation
 
+## Tech Stack
+This project utilizes Javascript, React, Tailwind and Axios.
 
+## Live Link & Localhost setup
+- Vercel: [Live Application](https://data8-api-project.vercel.app/)
+- For Localhost, clone the repository and run the project on Localhost 3000
 
-Loose Plan:
-Step 1: Connect to API Using POSTMAN with successful response ✅
-Step 2:Begin the build , Establish simple connecting using JSON Endpoint 
-"https://webservices.data-8.co.uk/EmailValidation/IsValid.json" and return Syntax level ✅
+## Stretch Goals
+- Explore the advanced options further.
+- Integrate with a backend (possibly MongoDB). It would be intriguing to see how this integrates with a user management system that includes attributes like name, age, and email.
+-Have a play around with some testing
 
-Step 2.1: Define states, email, errors, submission and response ✅
-Step 3: Include all 4 of the search option (update state, define array and update data object) ✅
-Step 4:Make the input and response layout cleaner "textarea" is not correct choice. ✅
-Step 5: Seems to be running into an issue when using the same email changing the level and then submitting, refresh button maybe useful. ✅
-Step 6: Add Key to an ENV file,   ✅
-Step 7: host on vercel ✅
-Step 8: upgrade documentation
-Step 9: Better use of error handling
+## Documentation
+- [Data8 isValid Email API](https://www.data-8.co.uk/resources/api-reference/emailvalidation/isvalid/#options)
+- [Axios Docs](https://axios-http.com/docs/intro)
+- [React and Tailwind setup guide](https://tailwindcss.com/docs/guides/create-react-app)
 
+## Development Plan
+1. Connect to API using POSTMAN with successful response ✅
+2. Begin the build, establish simple connection using JSON Endpoint "https://webservices.data-8.co.uk/EmailValidation/IsValid.json" and return Syntax level ✅
+3. Define states for email, errors, submission, and response ✅
+4. Include all 4 of the search options (update state, define array and update data object) ✅
+5. Improve the input and response layout; "textarea" is not the correct choice ✅
+6. Add a refresh button to solve the issue when using the same email but changing the level and then submitting ✅
+7. Move API Key to an ENV file ✅
+8. Host on Vercel ✅
+9. Upgrade documentation ✅
+10. Expand the contact form to include Name and Description fields ✅
+11. Make sure form submission in the email address prevents a submission with error message if not valid✅
+12. Improve error handling
 
-Tech Stack:
-Javascript, React, Tailwind and Axios
-
-
-Documentation:
-Data8 isValid Email API: https://www.data-8.co.uk/resources/api-reference/emailvalidation/isvalid/#options
-
-Axios Docs: https://axios-http.com/docs/intro
-
-React and Tailwind setup: https://tailwindcss.com/docs/guides/create-react-app
-
-
-
-Live Link & Localhost setup:
-Vercel: https://data8-api-project.vercel.app/
-
-Localhost 3000
-
-Stretch Goals:
-Look further into the advanced options.
-Link to a backend, perhaps MongoDB. Previously built a user management system that included name, age, email. It would be interesting to see how this works in connection with a database.

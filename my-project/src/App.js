@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const App = () => {
-  // Define state variables
+  // State variables for inputs, levels and response
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const [level, setLevel] = useState("Syntax");
+  const [level, setLevel] = useState("Address");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseDetails, setResponseDetails] = useState(null);
 
-  // In practice would put in env
+  // API key from environment variables
   const apiKey = process.env.REACT_APP_API_KEY;
 
-  // const levels = ["Syntax", "MX", "Server", "Address"];
-  
-
-  // POST request to an email validation service
+  // Function to make POST request to the email validation service
   const validateEmail = (email, level) => {
     const url = "https://webservices.data-8.co.uk/EmailValidation/IsValid.json";
     const data = {
+      // Data to be sent to the API
       username: `apikey-${apiKey}`,
       password: "",
       email: email,
@@ -26,7 +26,7 @@ const App = () => {
       options: {},
     };
 
-    // axios.post returns a promise that resolves to the response data
+    // axios.post makes the API request and returns a promise
     return axios
       .post(url, data)
       .then((response) => response.data)
@@ -56,13 +56,15 @@ const App = () => {
       .finally(() => setIsSubmitting(false));
   };
 
-  // refresh function  reset all state
+  // Refresh function to reset all state
   const handleRefresh = () => {
-    setEmail('');
-    setLevel('Syntax');
+    setName("");
+    setMessage("");
+    setEmail("");
+    setLevel("Address");
     setErrorMessage(null);
     setResponseDetails(null);
-  }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-300">
@@ -70,6 +72,32 @@ const App = () => {
         className="p-6 bg-white rounded shadow-md w-80 relative"
         onSubmit={handleSubmit}
       >
+        <h1 className="mb-4 text-bold">Contact Form</h1>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Name:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Message:
+          </label>
+          <textarea
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Write you message here"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </div>
+
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Email:
@@ -77,6 +105,7 @@ const App = () => {
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="email"
+            placeholder="example@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -86,7 +115,7 @@ const App = () => {
 
         <div>
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Level
+            Advanced Level
           </label>
           <select
             value={level}
@@ -101,15 +130,19 @@ const App = () => {
         </div>
 
         <div className="flex items-center justify-between">
-        <button className="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
-        type="submit">
-        Submit
-        </button>
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="button" 
-        onClick={handleRefresh}
-        >Refresh
-        </button>
+          <button
+            className="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Submit
+          </button>
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={handleRefresh}
+          >
+            Refresh
+          </button>
         </div>
         {responseDetails && <pre>{responseDetails}</pre>}
       </form>
