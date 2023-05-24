@@ -6,10 +6,13 @@ const App = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState(null);
+
   const [level, setLevel] = useState("Address");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseDetails, setResponseDetails] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
 
   // API key from environment variables
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -51,6 +54,7 @@ const App = () => {
           setResponseDetails(JSON.stringify(response, null, 2)); //If valid return response
         } else {
           setErrorMessage("Please enter a valid email address");
+          console.log(response)
         }
       })
       .finally(() => setIsSubmitting(false));
